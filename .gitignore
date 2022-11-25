@@ -1,6 +1,8 @@
 # venv Folder
 bet-it-all_env/
 *.env
+node_modules/
+package-lock.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

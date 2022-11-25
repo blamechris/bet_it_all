@@ -2,20 +2,29 @@ import random
 import asyncio
 import os
 import discord
+from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD') # note that the .env file needs an actual name to work with this
 
-client = discord.Client()
+description = '''First attempt at a bot'''
 
-@client.event
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
+
+bot = commands.Bot(command_prefix = '?', description = description, intents = intents)
+
+@bot.event
 async def on_ready():
-    guild = discord.utils.get(client.guilds, name=GUILD)  # the .env uses a 'name' not an ID
-    print(
-        f'{client.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})'
-    )
+    print(f'Logged in as {bot.user} (ID: {bot.user.id})')
+    print('------')
 
-client.run(TOKEN)
+@ bot.command()
+async def add(ctx, left: int, right: int):
+    """Adds two numbers together."""
+    await ctx.send(left + right)
+
+bot.run(TOKEN)
