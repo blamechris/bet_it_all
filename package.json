@@ -1,0 +1,26 @@
+{
+  "name": "bet_it_all",
+  "version": "1.0.0",
+  "description": "A simple bot for discord to collect user wagers and keep track",
+  "main": "index.js",
+  "dependencies": {
+    "ascii-table": "^0.0.9",
+    "discord.js": "^14.6.0",
+    "glob": "^8.0.3",
+    "mongoose": "^6.7.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blamechris/bet_it_all.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blamechris/bet_it_all/issues"
+  },
+  "homepage": "https://github.com/blamechris/bet_it_all#readme"
+}

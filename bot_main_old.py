@@ -9,13 +9,13 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD') # note that the .env file needs an actual name to work with this
 
-description = '''First attempt at a bot'''
+description = '''First attempt at a bot, use BET! to use commands'''
 
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-bot = commands.Bot(command_prefix = '?', description = description, intents = intents)
+bot = commands.Bot(command_prefix = 'BET!', description = description, intents = intents)
 
 @bot.event
 async def on_ready():
