@@ -1,5 +1,6 @@
 import random
 import asyncio
+import requests
 import os
 import discord
 from discord.ext import commands
@@ -26,6 +27,17 @@ async def on_ready():
 async def add(ctx, left: int, right: int):
     """Adds two numbers together."""
     await ctx.send(left + right)
+
+@bot.command()
+async def quote(ctx):
+    """Returns a quote from the API"""
+    response = requests.get('https://quotes.rest/qod')
+    if response.status_code == 200:
+        data = response.json()
+        quote = data['contents']['quotes'][0]['quote']
+        await ctx.send(quote)
+    else:
+        await ctx.send('Failed to retrieve quote.')
 
 @bot.command()
 async def poll(ctx, option1: str, option2: str):
