@@ -25,10 +25,13 @@ A feature-rich Discord bot with a leveling system, credit economy, and multiplay
   - Regular wins pay 2x your bet
 - Earn XP for playing (50 XP + 25 bonus for wins)
 
-### 🔇 Credit-Based Mutes
-- Mute other users by spending credits
-- 1000 credits = 1 minute mute
-- Max 60 minutes per mute
+### 🔇 Credit-Based Mutes & Loans
+- **Mute others**: Spend credits to mute other users (1000 credits = 1 minute)
+- **Take loans**: Get instant credits in exchange for being muted yourself!
+  - Borrow up to 5000 credits (configurable)
+  - Same rate: 1000 credits = 1 minute mute
+  - 24-hour cooldown between loans
+  - Perfect for when you need credits fast!
 - Great for fun server interactions!
 
 ### 📈 Leaderboards
@@ -82,6 +85,7 @@ node index.js
 - `/daily` - Claim daily credits (500 + level bonus)
 - `/transfer <user> <amount>` - Transfer credits to another user
 - `/give <user> <amount>` - Give credits (Admin only)
+- `/loan <amount>` - Borrow credits in exchange for being muted
 
 ### Game Commands
 - `/blackjack <bet>` - Start a multiplayer blackjack game
@@ -94,10 +98,14 @@ node index.js
   - Types: `credits`, `level`, `wins`
 - `/help` - Show all commands
 
-### Mute Commands
+### Mute & Loan Commands
 - `/mute <user> <minutes>` - Mute a user with credits
   - Cost: 1000 credits per minute
   - Max: 60 minutes
+- `/loan <amount>` - Borrow credits in exchange for being muted
+  - Rate: 1000 credits = 1 minute mute
+  - Max: 5000 credits (default)
+  - Cooldown: 24 hours
 
 ## Configuration
 
@@ -110,7 +118,9 @@ settings: {
   xpCooldown: 60,              // Seconds between XP gains
   minBet: 10,                  // Minimum blackjack bet
   maxBet: 10000,               // Maximum blackjack bet
-  muteCreditsPerMinute: 1000   // Credits per minute of mute
+  muteCreditsPerMinute: 1000,  // Credits per minute of mute
+  maxLoan: 5000,               // Maximum loan amount
+  loanCooldown: 24             // Hours between loans
 }
 ```
 
@@ -119,6 +129,7 @@ settings: {
 ### User
 - Credits, Level, XP
 - Game statistics (wins, losses, games played)
+- Loan statistics (total loans, total amount borrowed)
 - Daily claim tracking
 - Message cooldown tracking
 

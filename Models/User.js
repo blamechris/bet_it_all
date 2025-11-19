@@ -49,6 +49,18 @@ const userSchema = new Schema({
         type: Number,
         default: 0,
     },
+    totalLoans: {
+        type: Number,
+        default: 0,
+    },
+    totalLoanAmount: {
+        type: Number,
+        default: 0,
+    },
+    lastLoan: {
+        type: Date,
+        default: null,
+    },
 }, {
     timestamps: true,
 });

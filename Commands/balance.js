@@ -38,6 +38,13 @@ module.exports = {
             embed.addFields({ name: '📈 Win Rate', value: `${winRate}%`, inline: true });
         }
 
+        if (user.totalLoans > 0) {
+            embed.addFields(
+                { name: '💵 Total Loans', value: `${user.totalLoans}`, inline: true },
+                { name: '💸 Total Borrowed', value: `${user.totalLoanAmount.toLocaleString()}`, inline: true }
+            );
+        }
+
         await interaction.reply({ embeds: [embed] });
     },
 };

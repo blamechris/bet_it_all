@@ -35,6 +35,14 @@ const guildSchema = new Schema({
             type: Number,
             default: 1000, // 1000 credits = 1 minute mute
         },
+        maxLoan: {
+            type: Number,
+            default: 5000, // Maximum loan amount
+        },
+        loanCooldown: {
+            type: Number,
+            default: 24, // Hours between loans
+        },
     },
 }, {
     timestamps: true,

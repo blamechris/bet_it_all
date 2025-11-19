@@ -15,7 +15,8 @@ module.exports = {
                     value: '`/balance` - Check your credits and stats\n' +
                            '`/daily` - Claim daily credits\n' +
                            '`/transfer <user> <amount>` - Transfer credits to another user\n' +
-                           '`/give <user> <amount>` - Give credits (Admin only)',
+                           '`/give <user> <amount>` - Give credits (Admin only)\n' +
+                           '`/loan <amount>` - Get instant credits in exchange for being muted',
                     inline: false,
                 },
                 {
@@ -33,10 +34,14 @@ module.exports = {
                     inline: false,
                 },
                 {
-                    name: '🔇 Mute Commands',
+                    name: '🔇 Mute & Loan Commands',
                     value: '`/mute <user> <minutes>` - Mute a user with credits\n' +
                            '• Cost: 1000 credits per minute\n' +
-                           '• Max: 60 minutes',
+                           '• Max: 60 minutes\n\n' +
+                           '`/loan <amount>` - Borrow credits, get muted as payment\n' +
+                           '• Rate: 1000 credits = 1 minute mute\n' +
+                           '• Max loan: 5000 credits (default)\n' +
+                           '• Cooldown: 24 hours between loans',
                     inline: false,
                 },
                 {
