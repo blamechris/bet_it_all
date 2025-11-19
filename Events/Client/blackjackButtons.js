@@ -6,6 +6,7 @@ const {
     calculateHandValue,
     isBlackjack,
 } = require('../../Functions/blackjack');
+const { getRandomGif, GIF_SEARCH_TERMS } = require('../../Functions/gif');
 
 module.exports = {
     name: 'interactionCreate',
@@ -335,7 +336,26 @@ async function finishGame(game, interaction, client) {
 
     await game.save();
 
-    const embed = createGameEmbed(game, client, true);
+    // Determine which GIF to show based on game outcome
+    let gifSearchTerm = GIF_SEARCH_TERMS.blackjackStart;
+
+    // Check if anyone got blackjack
+    const hasBlackjack = game.players.some(p => p.status === 'won' && isBlackjack(p.hand));
+    // Check if there are any winners
+    const hasWinners = game.players.some(p => p.status === 'won');
+
+    if (hasBlackjack) {
+        gifSearchTerm = GIF_SEARCH_TERMS.blackjackBlackjack;
+    } else if (hasWinners) {
+        gifSearchTerm = GIF_SEARCH_TERMS.blackjackWin;
+    } else {
+        gifSearchTerm = GIF_SEARCH_TERMS.blackjackLose;
+    }
+
+    // Get a random GIF for the game result
+    const gifUrl = await getRandomGif(gifSearchTerm, client.config.tenorApiKey);
+
+    const embed = createGameEmbed(game, client, true, gifUrl);
 
     await interaction.update({
         embeds: [embed],

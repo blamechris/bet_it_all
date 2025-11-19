@@ -54,12 +54,21 @@ A feature-rich Discord bot with a leveling system, credit economy, and multiplay
 - View top players by credits, level, or wins
 - Compete with other server members
 
+### 🎬 Animated GIF Responses
+- Random funny gambling-themed GIFs during games
+- Dynamic GIFs based on game outcomes:
+  - Chicken challenges and escalations
+  - Blackjack wins, losses, and blackjacks
+  - Celebration and fail animations
+- Powered by Tenor API (optional feature)
+
 ## Setup
 
 ### Prerequisites
 - Node.js v16 or higher
 - MongoDB database
 - Discord Bot Token
+- Tenor API Key (optional, for GIF support)
 
 ### Installation
 
@@ -74,22 +83,32 @@ cd bet_it_all
 npm install
 ```
 
-3. Create a `config.json` file in the root directory:
+3. Get a Tenor API key (optional, for GIF support):
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project or select an existing one
+   - Enable the "Tenor API v2" (search for it in the API Library)
+   - Create credentials (API Key)
+   - Copy your API key
+
+4. Create a `config.json` file in the root directory:
 ```json
 {
   "token": "YOUR_DISCORD_BOT_TOKEN_HERE",
-  "mongoUri": "YOUR_MONGODB_CONNECTION_STRING_HERE"
+  "mongoUri": "YOUR_MONGODB_CONNECTION_STRING_HERE",
+  "tenorApiKey": "YOUR_TENOR_API_KEY_HERE"
 }
 ```
 
-4. Invite the bot to your server with these permissions:
+**Note:** The `tenorApiKey` is optional. If not provided, the bot will work without GIFs.
+
+5. Invite the bot to your server with these permissions:
    - Send Messages
    - Embed Links
    - Read Message History
    - Use Slash Commands
    - Moderate Members (for mute feature)
 
-5. Start the bot:
+6. Start the bot:
 ```bash
 node index.js
 ```
@@ -175,6 +194,8 @@ settings: {
 - **discord.js** v14 - Discord API wrapper
 - **MongoDB** - Database
 - **Mongoose** - MongoDB ODM
+- **Axios** - HTTP client for Tenor API
+- **Tenor API** - GIF integration (optional)
 - **Node.js** - Runtime
 
 ## License

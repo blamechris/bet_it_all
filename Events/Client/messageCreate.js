@@ -1,6 +1,7 @@
 const { EmbedBuilder } = require('discord.js');
 const { getUser, getGuild } = require('../../Functions/database');
 const ChickenGame = require('../../Models/ChickenGame');
+const { getRandomGif, GIF_SEARCH_TERMS } = require('../../Functions/gif');
 
 module.exports = {
     name: 'messageCreate',
@@ -94,6 +95,9 @@ async function handleChickenLoss(message, game) {
         game.status = 'finished';
         await game.save();
 
+        // Get a random losing GIF
+        const gifUrl = await getRandomGif(GIF_SEARCH_TERMS.chickenLose, message.client.config.tenorApiKey);
+
         // Announce the result
         const embed = new EmbedBuilder()
             .setColor('#FFA500')
@@ -110,6 +114,11 @@ async function handleChickenLoss(message, game) {
             )
             .setFooter({ text: `${loser.username} couldn't stay silent! 🐔` })
             .setTimestamp();
+
+        // Add GIF if available
+        if (gifUrl) {
+            embed.setImage(gifUrl);
+        }
 
         await message.channel.send({ embeds: [embed] });
 

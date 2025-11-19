@@ -59,7 +59,7 @@ function formatHand(hand, hideFirst = false) {
     return hand.join(' ');
 }
 
-function createGameEmbed(game, client, showDealerHand = false) {
+function createGameEmbed(game, client, showDealerHand = false, gifUrl = null) {
     const embed = new EmbedBuilder()
         .setColor('#FF0000')
         .setTitle('🎰 Multiplayer Blackjack')
@@ -128,6 +128,11 @@ function createGameEmbed(game, client, showDealerHand = false) {
         embed.setDescription(`**<@${currentPlayer.userId}>'s turn**\nHit or Stand?`);
     } else if (game.status === 'finished') {
         embed.setDescription('**Game Over!**');
+    }
+
+    // Add GIF if provided
+    if (gifUrl) {
+        embed.setImage(gifUrl);
     }
 
     return embed;

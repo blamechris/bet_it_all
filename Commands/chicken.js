@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const ChickenGame = require('../Models/ChickenGame');
 const { getUser } = require('../Functions/database');
+const { getRandomGif, GIF_SEARCH_TERMS } = require('../Functions/gif');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -144,6 +145,9 @@ module.exports = {
             status: 'active',
         });
 
+        // Get a random GIF for the challenge
+        const gifUrl = await getRandomGif(GIF_SEARCH_TERMS.chickenChallenge, interaction.client.config.tenorApiKey);
+
         const embed = new EmbedBuilder()
             .setColor('#FF6B6B')
             .setTitle('🐔 CHICKEN CHALLENGE!')
@@ -161,6 +165,11 @@ module.exports = {
             )
             .setFooter({ text: 'Will they chicken out? 🐔' })
             .setTimestamp();
+
+        // Add GIF if available
+        if (gifUrl) {
+            embed.setImage(gifUrl);
+        }
 
         const message = await interaction.reply({
             embeds: [embed],
@@ -203,6 +212,9 @@ async function escalateChickenGame(interaction, game) {
 
     const opponent = await interaction.client.users.fetch(opponentId);
 
+    // Get a random escalation GIF
+    const gifUrl = await getRandomGif(GIF_SEARCH_TERMS.chickenEscalate, interaction.client.config.tenorApiKey);
+
     const embed = new EmbedBuilder()
         .setColor('#FF6B6B')
         .setTitle('🐔 CHICKEN ESCALATES!')
@@ -221,6 +233,11 @@ async function escalateChickenGame(interaction, game) {
         )
         .setFooter({ text: 'The stakes are rising! 🔥' })
         .setTimestamp();
+
+    // Add GIF if available
+    if (gifUrl) {
+        embed.setImage(gifUrl);
+    }
 
     await interaction.reply({ embeds: [embed] });
 }
