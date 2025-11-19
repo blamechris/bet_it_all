@@ -4,7 +4,10 @@
   "description": "A simple bot for discord to collect user wagers and keep track",
   "main": "index.js",
   "dependencies": {
+    "@discordjs/rest": "^1.3.0",
     "ascii-table": "^0.0.9",
+    "axios": "^1.6.0",
+    "discord-api-types": "^0.37.15",
     "discord.js": "^14.6.0",
     "glob": "^8.0.3",
     "mongoose": "^6.7.3"

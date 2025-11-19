@@ -1,0 +1,5 @@
+{
+  "token": "YOUR_DISCORD_BOT_TOKEN_HERE",
+  "mongoUri": "YOUR_MONGODB_CONNECTION_STRING_HERE",
+  "tenorApiKey": "YOUR_TENOR_API_KEY_HERE"
+}
