@@ -25,6 +25,22 @@ A feature-rich Discord bot with a leveling system, credit economy, and multiplay
   - Regular wins pay 2x your bet
 - Earn XP for playing (50 XP + 25 bonus for wins)
 
+### 🐔 Chicken - The Ultimate Nerve Game
+- **High-stakes challenge game** where players test their nerves
+- Challenge another user with `/chicken @user <bet>`
+- Both players' bets are deducted immediately
+- One player must respond with `/chicken @opponent` or lose!
+- **The catch**: If they say ANYTHING else, they lose and get muted!
+- Each round doubles the mute duration:
+  - Round 1: 5 minutes
+  - Round 2: 10 minutes
+  - Round 3: 20 minutes
+  - Round 4: 40 minutes
+  - Round 5: 80 minutes
+  - Maximum: 1 day (1440 minutes)
+- Winner takes the entire pot!
+- The most intense betting game in the server!
+
 ### 🔇 Credit-Based Mutes & Loans
 - **Mute others**: Spend credits to mute other users (1000 credits = 1 minute)
 - **Take loans**: Get instant credits in exchange for being muted yourself!
@@ -92,6 +108,11 @@ node index.js
   - Click "Join Game" to join
   - Host clicks "Start Game" to begin
   - Use Hit/Stand buttons during your turn
+- `/chicken <user> <bet>` - Challenge someone to a game of chicken
+  - Both players bet the same amount (deducted immediately)
+  - Respond with `/chicken @opponent` to escalate
+  - Say anything else and you lose + get muted!
+  - Mute duration doubles each round (5m → 10m → 20m → 40m → max 1 day)
 
 ### Info Commands
 - `/leaderboard [type]` - View server leaderboards
@@ -142,6 +163,12 @@ settings: {
 - Player hands and bets
 - Dealer hand
 - Deck management
+
+### ChickenGame
+- Active chicken challenges
+- Player bets and pot
+- Current round and mute duration
+- Turn tracking
 
 ## Technology Stack
 

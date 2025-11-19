@@ -24,7 +24,11 @@ module.exports = {
                     value: '`/blackjack <bet>` - Start a multiplayer blackjack game\n' +
                            '• Click "Join Game" to join an existing game\n' +
                            '• Click "Start Game" to begin\n' +
-                           '• Use Hit/Stand buttons during your turn',
+                           '• Use Hit/Stand buttons during your turn\n\n' +
+                           '`/chicken <user> <bet>` - Challenge someone to chicken!\n' +
+                           '• High-stakes nerve game with escalating mute durations\n' +
+                           '• Both players bet, loser gets muted\n' +
+                           '• Stakes double each round: 5m → 10m → 20m → 40m → max 1 day',
                     inline: false,
                 },
                 {
@@ -60,6 +64,20 @@ module.exports = {
                            '5. Get closer to 21 than the dealer without busting!\n' +
                            '• Blackjack pays 2.5x your bet\n' +
                            '• Regular wins pay 2x your bet',
+                    inline: false,
+                },
+                {
+                    name: '🐔 How to Play Chicken',
+                    value: '1. Use `/chicken @user <bet>` to challenge\n' +
+                           '2. Both players\' bets are deducted immediately\n' +
+                           '3. One player must respond with `/chicken @opponent`\n' +
+                           '4. If they say ANYTHING else, they lose and get muted!\n' +
+                           '5. If they use `/chicken` back, round escalates\n' +
+                           '6. Mute duration DOUBLES each round!\n' +
+                           '7. Winner takes the entire pot!\n' +
+                           '• Starting mute: 5 minutes\n' +
+                           '• Maximum mute: 1 day (1440 minutes)\n' +
+                           '• Don\'t speak... just `/chicken`!',
                     inline: false,
                 },
             )
